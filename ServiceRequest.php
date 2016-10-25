@@ -103,7 +103,7 @@ class ServiceRequest{
         $postParams = null;
 
         $url = $this->ConstructManagerUrl($methodName, $serviceUrl);
-        echo $url.'<br><br>';
+        // echo $url.'<br><br>';
         $curlProxy = $this->_configuration->getProxy();
         $responseText = $this->submitHttpPost($url,$postParams, self::TIMEOUT_TOTAL, $curlProxy);
         //error_log($responseText);

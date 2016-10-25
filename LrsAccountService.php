@@ -69,9 +69,15 @@ class LrsAccountService{
      /// </summary>
      
      /// <returns>List of Activity Providers</returns>
-     public function listActivityProviders()
+     public function listActivityProviders($appid = null)
      {
         $request = new ServiceRequest($this->_configuration);
+
+        if (!empty($appid)) {
+            $params = array('appid' => $appid);
+            $request->setMethodParams($params);
+        }
+        
         $response = $request->CallService("rustici.lrsaccount.listActivityProviders");
 
         write_log('rustici.lrsaccount.listActivityProviders : '.$response);
@@ -86,24 +92,26 @@ class LrsAccountService{
      /// </summary>
      
      /// <returns>Activity Provider</returns>
-     public function editActivityProvider($accountKey, $isActive = null, $authType = null, $label = null)
+     public function editActivityProvider($accountKey, $isActive = null, $authType = null, $label = null, $appId = null, $permissionslevel = null)
      {
         $request = new ServiceRequest($this->_configuration);
 
         $params = array('accountkey'=>$accountKey);
-                            
-        
-        if(isset($isActive))
-        {
+
+        if (isset($isActive)) {
             $params['isactive'] = $isActive;
         }
-        if(isset($authType))
-        {
+        if (isset($authType)) {
             $params['authtype'] = $authType;
         }
-        if (isset($label)) 
-        {
+        if (isset($label)) {
             $params['label'] = $label;
+        }
+        if (isset($appId)) {
+            $params['allowedendpoints'] = $appId;
+        }
+        if (isset($permissionslevel)) {
+            $params['permissionslevel'] = $permissionslevel;
         }
 
         $request->setMethodParams($params);

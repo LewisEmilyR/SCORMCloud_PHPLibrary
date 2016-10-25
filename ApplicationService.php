@@ -106,10 +106,13 @@ class ApplicationService{
         /// <param name="appId">The child app id to be updated</param>
         /// </summary>
         /// <returns></returns>
-        public function GetAppInfo($appId)
+        public function GetAppInfo($appId, $childAppId = null)
         {
 			$request = new ServiceRequest($this->_configuration);
-			$params = array('appid' => $appId);
+            $params = array('appid' => $appId);
+            if (isset($childAppId)) {
+                $params['childappid'] = $childAppId;
+            }
 			$request->setMethodParams($params);
             $response = $request->CallManagerService("rustici.application.getAppInfo");
             return $response;

@@ -36,9 +36,11 @@ class LrsAccount
     {
         private $_accountKey;
         private $_accountEnabled;
-		private $_accountLabel;
+        private $_accountLabel;
         private $_accountSecret;
         private $_accountAuthType;
+        private $_permissionsLevel;
+        private $_allowedEndpoints;
 
         
         /// private int numberOfInstances;
@@ -60,11 +62,13 @@ class LrsAccount
                 $xml = $xml->activityProvider;  
             }
             
-            $this->_accountKey = (string)$xml->accountKey;            
-            $this->_accountEnabled = (boolean)$xml->accountEnabled;
-	        $this->_accountLabel = (string)$xml->accountLabel;
-            $this->_accountAuthType = (string)$xml->accountAuthType;
-            $this->_accountSecret = (string)$xml->accountSecret;
+            $this->_accountKey = (string) $xml->accountKey;
+            $this->_accountEnabled = (boolean) $xml->accountEnabled;
+            $this->_accountLabel = (string) $xml->accountLabel;
+            $this->_accountSecret = (string) $xml->accountSecret;
+            $this->_accountAuthType = (string) $xml->accountAuthType;
+            $this->_permissionsLevel = (string) $xml->permissionsLevel;
+            $this->_allowedEndpoints = (string) $xml->allowedEndpoints;
         }
 
         
@@ -94,39 +98,41 @@ class LrsAccount
             return $allResults;
         }
 
-        
         public function getAccountKey()
         {
             return $this->_accountKey;
         }
-
-        
+    
         public function getAccountEnabled()
         {
             return $this->_accountEnabled;
         }
-
-		public function getAccountLabel()
+    
+        public function getAccountLabel()
         {
             return $this->_accountLabel;
         }
-
+    
         public function getAccountSecret()
         {
             return $this->_accountSecret;
         }
-
+    
         public function getAccountAuthType()
         {
             return $this->_accountAuthType;
         }
-
-        public function setAccountKey($accountKey)
+    
+        public function getPermissionsLevel()
         {
-            $this->_accountKey = $accountKey;
+            return $this->_permissionsLevel;
+        }
+    
+        public function getAccountAllowedEndpoints()
+        {
+            return $this->_allowedEndpoints;
         }
 
-        
         public function setAccountEnabled($accountEnabled)
         {
             $this->_accountEnabled = $accountEnabled;
@@ -145,6 +151,16 @@ class LrsAccount
         public function setAccountAuthType($accountAuthType)
         {
             $this->_accountAuthType = $accountAuthType;
+        }
+    
+        public function setPermissionsLevel($permissionsLevel)
+        {
+            $this->_permissionsLevel = $permissionsLevel;
+        }
+    
+        public function setAccountAllowedEndpoints($allowedEndpoints)
+        {
+            $this->_allowedEndpoints = $allowedEndpoints;
         }
  
 }
