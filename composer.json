@@ -1,0 +1,21 @@
+{
+    "name": "scormcloud/phplibrary",
+    "description": "Scorm Cloud's PHP Library, updated for composer and a modern version of php.",
+    "require": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ScormCloud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Emily Lewis",
+            "email": "emily.lewis.emily@gmail.com"
+        }
+    ]
+}
