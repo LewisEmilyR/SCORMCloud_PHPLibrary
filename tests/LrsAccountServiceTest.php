@@ -7,7 +7,7 @@ class LrsAccountServiceTest extends TestCase
 {
     public function testListActivityProviders()
     {
-        $service = new ScormEngineService('4R7SARI28E', '41MMLXlRxLYv2OikL4sSMeW3zkA0BjlabnDwbiaL', 'Test Company', 'Initial Application for Realm', '1.0.0');
+        $service = new ScormEngineService(AppKey, AppSecret, CompanyName, AppName, ScormCloudVersion);
         $list = $service->lrsAccountService()->listActivityProviders();
         // NOTE: an empty list will also pass this test.
         $this->assertContainsOnlyInstancesOf(ScormCloud\LRSAccount::class, $list);
@@ -15,7 +15,7 @@ class LrsAccountServiceTest extends TestCase
 
     public function testCreateActivityProvider()
     {
-        $service = new ScormEngineService('4R7SARI28E', '41MMLXlRxLYv2OikL4sSMeW3zkA0BjlabnDwbiaL', 'Test Company', 'Initial Application for Realm', '1.0.0');
+        $service = new ScormEngineService(AppKey, AppSecret, CompanyName, AppName, ScormCloudVersion);
         $provider = $service->lrsAccountService()->createActivityProvider();
         return $provider;
     }
@@ -26,10 +26,10 @@ class LrsAccountServiceTest extends TestCase
      */
     public function testEditActivityProvider($provider)
     {
-        $service = new ScormEngineService('4R7SARI28E', '41MMLXlRxLYv2OikL4sSMeW3zkA0BjlabnDwbiaL', 'Test Company', 'Initial Application for Realm', '1.0.0');
-        $newProvider = $service->lrsAccountService()->editActivityProvider($provider->getKey(), null, null, "Edited Provider", '4R7SARI28E');
+        $service = new ScormEngineService(AppKey, AppSecret, CompanyName, AppName, ScormCloudVersion);
+        $newProvider = $service->lrsAccountService()->editActivityProvider($provider->getKey(), null, null, "Edited Provider", AppKey);
         $this->assertEquals("Edited Provider", $newProvider->getLabel());
-        $this->assertEquals('4R7SARI28E', $newProvider->getAllowedEndpoints());
+        $this->assertEquals(AppKey, $newProvider->getAllowedEndpoints());
         return $newProvider;
     }
 
@@ -38,7 +38,7 @@ class LrsAccountServiceTest extends TestCase
      */
     public function testDeleteActivityProvider($provider)
     {
-        $service = new ScormEngineService('4R7SARI28E', '41MMLXlRxLYv2OikL4sSMeW3zkA0BjlabnDwbiaL', 'Test Company', 'Initial Application for Realm', '1.0.0');
+        $service = new ScormEngineService(AppKey, AppSecret, CompanyName, AppName, ScormCloudVersion);
         $response = $service->lrsAccountService()->deleteActivityProvider($provider->getKey());
         //NOTE: If the deletion fails, expect an exception.
         $this->assertTrue($response);

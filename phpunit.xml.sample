@@ -1,0 +1,12 @@
+<phpunit>
+    <php>
+        <const name="CompanyName" value="YOUR COMPANY NAME HERE"/>
+        <const name="AppManagementKey" value="APP MANAGEMENT KEY HERE"/>
+        <const name="AppManagementSecret" value="APP MANAGEMENT SECRET HERE"/>
+        <const name="AppKey" value="EXAMPLE APP KEY HERE"/>
+        <const name="AppSecret" value="EXAMPLE APP SECRET HERE"/>
+        <const name="AppManagementName" value="App Management App"/>
+        <const name="AppName" value="EXAMPLE APP NAME HERE"/>
+        <const name="ScormCloudVersion" value="SCORM CLOUD VERSION OF CHOICE HERE"/>
+    </php>
+</phpunit>

@@ -2,6 +2,8 @@
 
 namespace ScormCloud;
 
+use Exception;
+
 /**
  * These objects are described as "Activity Providers" on the scorm cloud LRSView page.
  */

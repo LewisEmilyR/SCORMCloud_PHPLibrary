@@ -7,7 +7,7 @@ class ScormEngineServiceTest extends TestCase
 {
     public function testOriginString()
     {
-        $service = new ScormEngineService('fakeAppId', 'fakeKey', 'Test Company', 'Initial Application for Realm', '1.0.0');
+        $service = new ScormEngineService('fakeAppId', 'fakeKey', 'Test Company', 'Initial Application For Realm', '1.0.0');
         $string = $service->getOriginString();
         $this->assertInstanceOf('ScormCloud\ScormEngineService', $service);
         $this->assertEquals("testcompany.initialapplicationforrealm.1.0.0", $string);
@@ -15,7 +15,7 @@ class ScormEngineServiceTest extends TestCase
 
     public function isValidURL()
     {
-        $service = new ScormEngineService('3GJ3Q90PRB', 'wVrVf5tAWiSIzutqapAYWnncysGsUkeu8n4vZnZd', 'Test Company', 'App Management App', '1.0.0');
+        $service = new ScormEngineService(AppManagementKey, AppManagementSecret, CompanyName, AppManagementName, ScormCloudVersion);
         $this->assertTrue($service->isValidUrl());
     }
 
@@ -25,13 +25,13 @@ class ScormEngineServiceTest extends TestCase
      */
     public function testFailureIsValidAccount()
     {
-        $service = new ScormEngineService('fakeAppId', 'fakeKey', 'Test Company', 'Initial Application for Realm', '1.0.0');
+        $service = new ScormEngineService('fakeAppId', 'fakeKey', CompanyName, AppName, ScormCloudVersion);
         $authResult = $service->isValidAccount();
     }
 
     public function testIsValidAccount()
     {
-        $service = new ScormEngineService('4R7SARI28E', '41MMLXlRxLYv2OikL4sSMeW3zkA0BjlabnDwbiaL', 'Test Company', 'Initial Application for Realm', '1.0.0');
+        $service = new ScormEngineService(AppKey, AppSecret, CompanyName, AppName, ScormCloudVersion);
         $authResult = $service->isValidAccount();
         $this->assertTrue($authResult);
     }
